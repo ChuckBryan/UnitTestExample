@@ -80,14 +80,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Automocking\MoqAutoMocker.cs" />
-    <Compile Include="Automocking\MoqFactory.cs" />
-    <Compile Include="Automocking\MoqServiceLocator.cs" />
-    <Compile Include="When_DisplayName_Is_Null.cs" />
+    <Compile Include="AutoMocking\MoqAutoMocker.cs" />
+    <Compile Include="AutoMocking\MoqFactory.cs" />
+    <Compile Include="AutoMocking\MoqServiceLocator.cs" />
+    <Compile Include="SpecFor.cs" />
+    <Compile Include="1_When_DisplayName_Is_Null.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="When_Duplicate_Email_Exists.cs" />
-    <Compile Include="When_Email_Is_Invalid.cs" />
-    <Compile Include="When_Password_Is_Null_Or_Empty.cs" />
+    <Compile Include="4_When_Duplicate_Email_Exists.cs" />
+    <Compile Include="3_When_Email_Is_Invalid.cs" />
+    <Compile Include="2_When_Password_Is_Null_Or_Empty.cs" />
+    <Compile Include="5_When_Unexpected_Error_Is_Thrown.cs" />
+    <Compile Include="6_When_Add_New_User_Service_Saves.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RegisterUser\RegisterUser.csproj">

@@ -2,21 +2,18 @@
 {
     using System;
     using System.Linq;
+    using Data;
     using EnsureThat;
 
-    public interface IAddNewUserService
-    {
-        void AddUser(string displayName, string email, string password);
-
-    }
-
-    public class AddNewUserService : IAddNewUserService
+    public class AddNewUserService
     {
         private readonly RegisteredUserContext _dbContext;
         private readonly ISendValidationEmail _validationEmailService;
         private readonly ILogger _logger;
 
-        public AddNewUserService(RegisteredUserContext dbContext, ISendValidationEmail validationEmailService, ILogger logger)
+        public AddNewUserService(RegisteredUserContext dbContext, 
+            ISendValidationEmail validationEmailService, 
+            ILogger logger)
         {
             _dbContext = dbContext;
             _validationEmailService = validationEmailService;
@@ -29,6 +26,8 @@
             Ensure.That(email).IsEmailAddress();
             Ensure.That(password).IsNotNullOrEmpty();
 
+            var registeredUser = RegisteredUser.Create(displayName, email, password);
+
             if (_dbContext.RegisteredUsers.Any(x => x.Email.Equals(email)))
             {
                 throw new DuplicateEmailError();
@@ -36,10 +35,12 @@
 
             try
             {
-                _dbContext.RegisteredUsers.Add(
-                    new RegisteredUser {DisplayName = displayName, Email = email, Password = password});
+
+                _dbContext.RegisteredUsers.Add(registeredUser);
 
                 _validationEmailService.SendEmail(displayName, email);
+
+                _dbContext.SaveChanges();
             }
             catch (Exception ex)
             {

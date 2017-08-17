@@ -50,14 +50,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DuplicateEmailError.cs" />
-    <Compile Include="EnsureStringExtensions.cs" />
-    <Compile Include="ILogger.cs" />
-    <Compile Include="IAddNewUserService.cs" />
-    <Compile Include="ISendValidationEmail.cs" />
+    <Compile Include="Infrastructure\DuplicateEmailError.cs" />
+    <Compile Include="Infrastructure\EnsureStringExtensions.cs" />
+    <Compile Include="Infrastructure\ILogger.cs" />
+    <Compile Include="AddNewUserService.cs" />
+    <Compile Include="Infrastructure\ISendValidationEmail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegisteredUsers.cs" />
-    <Compile Include="RegisteredUserContext.cs" />
+    <Compile Include="Data\RegisteredUsers.cs" />
+    <Compile Include="Data\RegisteredUserContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

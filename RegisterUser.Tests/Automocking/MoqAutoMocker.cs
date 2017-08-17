@@ -1,15 +1,19 @@
-﻿namespace RegisterUser.Tests.Automocking
+﻿namespace RegisterUser.Tests.AutoMocking
 {
     using StructureMap.AutoMocking;
 
-    namespace SpecsFor.AutoMocking
+    using Moq;
+
+    public class MoqAutoMocker<T> : AutoMocker<T> where T : class
     {
-        public class MoqAutoMocker<T> : AutoMocker<T> where T : class
+        public MoqAutoMocker() : base(new MoqServiceLocator())
         {
-            public MoqAutoMocker() : base(new MoqServiceLocator())
-            {
-                ServiceLocator = new MoqServiceLocator();
-            }
+            ServiceLocator = new MoqServiceLocator();
+        }
+
+        public Mock<TMock> GetMockFor<TMock>() where TMock : class
+        {
+            return Mock.Get(Get<TMock>());
         }
     }
 }

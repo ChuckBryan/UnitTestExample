@@ -1,4 +1,4 @@
-﻿namespace RegisterUser
+﻿namespace RegisterUser.Data
 {
     using System.Data.Entity;
 
@@ -13,6 +13,6 @@
             
         }
 
-        public DbSet<RegisteredUser> RegisteredUsers { get; set; }
+        public virtual DbSet<RegisteredUser> RegisteredUsers { get; set; }
     }
 }

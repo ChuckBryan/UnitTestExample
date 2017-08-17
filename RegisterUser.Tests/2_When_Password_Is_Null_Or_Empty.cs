@@ -1,9 +1,14 @@
 ﻿namespace RegisterUser.Tests
 {
+    #region Using Statements
+
     using System;
+    using Data;
     using Moq;
     using Shouldly;
     using Xunit;
+
+    #endregion
 
     public class When_Password_Is_Null_Or_Empty
     {

@@ -1,9 +1,14 @@
 ﻿namespace RegisterUser.Tests
 {
+    #region Using Statements
+
     using System;
+    using Data;
     using Moq;
     using Shouldly;
     using Xunit;
+
+    #endregion
 
     public class When_DisplayName_Is_Null
     {
@@ -20,7 +25,6 @@
 
             // Act
             // Assert
-
             Should.Throw<ArgumentNullException>(() =>
             {
                 addNewUserService.AddUser(null, "test@test.com", "P@ssword!");
